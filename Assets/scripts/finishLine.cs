@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class finishLine : MonoBehaviour
 {
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "car")

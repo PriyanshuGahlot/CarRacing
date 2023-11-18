@@ -42,6 +42,8 @@ public class startMenuController : MonoBehaviour
     {
         //PlayerPrefs.SetInt("money", 0);
         //reset();
+        //QualitySettings.SetQualityLevel(2);
+        Screen.SetResolution((int)Screen.width, (int)Screen.height, true);
         notEnufMoneyText.SetActive(false);
         if (FindObjectOfType<spawner>() == null) Instantiate(spawner, Vector3.zero, Quaternion.identity);
         audio = FindObjectOfType<audioManager>().GetComponent<audioManager>();

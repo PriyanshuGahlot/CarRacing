@@ -34,7 +34,8 @@ public class car : MonoBehaviour
 
     Rigidbody rb;
 
-    float x;
+    [HideInInspector]
+    public float x;
     float y;
 
     void Start()
@@ -56,19 +57,22 @@ public class car : MonoBehaviour
             if (currSpeed > speedWhenAngleReductionValueKicks) { steerAngleReduction = steerAngleReductionMultiplyer / currSpeed; }
             steerAngleReduction = Mathf.Clamp(steerAngleReduction, 0.2f, 1f);
             //Debug.Log(steerAngleReduction);
-            x = Input.GetAxis("Vertical");
+            //x = Input.GetAxis("Vertical");
+            //x = Input.acceleration.y;
+            //Debug.Log(x);
             float currTorque = x * motorTorque;
             wheelColliderBL.motorTorque = currTorque;
             wheelColliderBR.motorTorque = currTorque;
             wheelColliderFL.motorTorque = currTorque;
             wheelColliderFR.motorTorque = currTorque;
 
-            y = Input.GetAxis("Horizontal");
+            //y = Input.GetAxis("Horizontal");
+            y = Input.acceleration.x*2;
+            y = Mathf.Clamp(y, -1, 1);
+            //Debug.Log(y);
             float currSteer = maxSteer * y;
             wheelColliderFL.steerAngle = currSteer * steerAngleReduction;
             wheelColliderFR.steerAngle = currSteer * steerAngleReduction;
-
-            breaking();
 
             if (x != 0)
             {
@@ -120,21 +124,19 @@ public class car : MonoBehaviour
         makeTrail();
 
     }
-    
-    void breaking()
+
+    public void breakUp()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            wheelColliderBL.brakeTorque = breakTorque;
-            wheelColliderBR.brakeTorque = breakTorque;
-            breaksON = true;
-        }
-        else
-        {
-            wheelColliderBL.brakeTorque = 0;
-            wheelColliderBR.brakeTorque = 0;
-            breaksON = false;
-        }
+        wheelColliderBL.brakeTorque = 0;
+        wheelColliderBR.brakeTorque = 0;
+        breaksON = false;
+    }
+
+    public void breakDown()
+    {
+        wheelColliderBL.brakeTorque = breakTorque;
+        wheelColliderBR.brakeTorque = breakTorque;
+        breaksON = true;
     }
 
     void makeTrail()
@@ -198,8 +200,9 @@ public class car : MonoBehaviour
 
     public void stopCar()
     {
-        wheelColliderBL.brakeTorque = breakTorque * 20;
-        wheelColliderBR.brakeTorque = breakTorque * 20;
+        Debug.Log("stoping");
+        wheelColliderBL.brakeTorque = breakTorque * 30;
+        wheelColliderBR.brakeTorque = breakTorque * 30;
     }
 
     void balance()
