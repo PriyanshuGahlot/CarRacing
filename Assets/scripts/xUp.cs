@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class xUp : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -10,11 +11,17 @@ public class xUp : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public xDown xDown;
     ingameUiController controller;
 
+    Sprite original;
+    public Image image;
+    public Sprite pressedImage;
+
+
     private void Start()
     {
         car = FindObjectOfType<car>();
         pressed = false;
         controller = FindObjectOfType<ingameUiController>();
+        original = image.sprite;
     }
 
     private void FixedUpdate()
@@ -34,10 +41,12 @@ public class xUp : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
         pressed = true;
+        image.sprite = pressedImage;
     }
 
     void IPointerUpHandler.OnPointerUp(UnityEngine.EventSystems.PointerEventData eventData)
     {
         pressed = false;
+        image.sprite = original;
     }
 }

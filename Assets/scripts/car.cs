@@ -67,9 +67,15 @@ public class car : MonoBehaviour
             wheelColliderFR.motorTorque = currTorque;
 
             //y = Input.GetAxis("Horizontal");
-            y = Input.acceleration.x*2;
-            y = Mathf.Clamp(y, -1, 1);
-            //Debug.Log(y);
+            y = Input.acceleration.x;
+            float threshold = 0.05f;
+            Debug.Log(y);
+            if (Mathf.Abs(y) > threshold)
+            {
+                y *= 1.8f;
+                y = Mathf.Clamp(y, -1, 1);
+            }
+            else y = 0;
             float currSteer = maxSteer * y;
             wheelColliderFL.steerAngle = currSteer * steerAngleReduction;
             wheelColliderFR.steerAngle = currSteer * steerAngleReduction;

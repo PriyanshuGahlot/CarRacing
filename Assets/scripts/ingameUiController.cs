@@ -14,6 +14,7 @@ public class ingameUiController : MonoBehaviour
     public GameObject endRacePanel;
     public GameObject pausemenu;
     public GameObject greyPanel;
+    public GameObject pauseBtn;
     public Button resume;
     public Button restart;
     public Button restartRacefinish;
@@ -40,6 +41,8 @@ public class ingameUiController : MonoBehaviour
         currTime = 0;
         car = FindObjectOfType<car>().transform.GetComponent<Rigidbody>();
         speedometer.SetActive(false);
+        pauseBtn.SetActive(false);
+        greyPanel.SetActive(true);
     }
 
     void Update()
@@ -99,6 +102,7 @@ public class ingameUiController : MonoBehaviour
         countDown.gameObject.SetActive(false);
         greyPanel.SetActive(false);
         speedometer.SetActive(true);
+        pauseBtn.SetActive(true);
     }
 
     public void setPauseMenuUp()

@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795236189733346396}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &795236189733346399
 MonoBehaviour:
@@ -59,6 +59,7 @@ MonoBehaviour:
     type: 3}
   desert: {fileID: 571053991827686458, guid: ccf8e5b7309c4c747a5525cf0cec8f59, type: 3}
   cam: {fileID: 2831027268411092921, guid: 6aae07f86bcc01847a7188554eb3f911, type: 3}
-  evenSystemForGameScene: {fileID: 6390786003338457156, guid: 1f13dab6d1e6729428b9c60319e5f957,
+  eventSystemForGameScene: {fileID: 6390786003338457156, guid: 1f13dab6d1e6729428b9c60319e5f957,
     type: 3}
   ui: {fileID: 4672851183325610464, guid: d4ee776a102c0f9479865d1766322f21, type: 3}
+  spawned: 0

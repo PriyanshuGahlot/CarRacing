@@ -18,7 +18,7 @@ public class spawner : MonoBehaviour
     public GameObject countrySide;
     public GameObject desert;
     public GameObject cam;
-    public GameObject evenSystemForGameScene;
+    public GameObject eventSystemForGameScene;
     public GameObject ui;
 
     public bool spawned;
@@ -49,7 +49,7 @@ public class spawner : MonoBehaviour
             //if (this.gameObject != obj || obj.GetComponent<playerHolder>()!=null) Destroy(obj);
             if (this.gameObject != obj) Destroy(obj);
         }
-        Instantiate(evenSystemForGameScene, Vector3.zero, Quaternion.identity);
+        Instantiate(eventSystemForGameScene, Vector3.zero, Quaternion.identity);
         Instantiate(ui, Vector3.zero, Quaternion.identity);
         switch (mapToSpawn)
         {
